@@ -13,6 +13,11 @@ body
     color: white;
     background: #2c3e50;
 }
+.react-chart
+{
+    width: 1000px;
+    height: 500px;
+}
 
 footer
 {

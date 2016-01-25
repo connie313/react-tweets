@@ -4,6 +4,7 @@ var React = require('react');
 var Tweets = require('./Tweets.react.js');
 var Loader = require('./Loader.react.js');
 var NotificationBar = require('./NotificationBar.react.js');
+var Chart = require('./Chart.react.js');
 
 // Export the TweetsApp component
 module.exports = TweetsApp = React.createClass({
@@ -167,6 +168,21 @@ module.exports = TweetsApp = React.createClass({
     window.addEventListener('scroll', this.checkWindowScroll);
 
   },
+  showTweets: function(){
+    
+    var data = [
+      {
+        x: ["2013-10-04 22:23:00", "2013-11-04 22:23:00", "2013-12-04 22:23:00"],
+        y: [1, 3, 6],
+        type: "scatter"
+      }
+    ];
+    var graphOptions = {filename: "date-axes", fileopt: "overwrite"};
+    plotly.plot(data, graphOptions, function (err, msg) {
+        console.log(msg);
+    });
+  },
+  
 
   // Render the component
   render: function(){
@@ -176,6 +192,7 @@ module.exports = TweetsApp = React.createClass({
         <Tweets tweets={this.state.tweets} />
         <Loader paging={this.state.paging}/>
         <NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/>
+        <Chart onShowTweets={this.showTweets} />
       </div>
     )
 

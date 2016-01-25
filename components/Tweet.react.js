@@ -15,6 +15,10 @@ module.exports = Tweet = React.createClass({
           </cite>
           <span className="content">{tweet.body}</span>
         </blockquote>
+        <span>
+          <small>Keywords:</small>
+          {tweet.track}
+        </span>
       </li>
     )
   }

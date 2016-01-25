@@ -1,6 +1,6 @@
 var Tweet = require('../models/Tweet');
 
-module.exports = function(stream, io){
+module.exports = function(stream, io, tracklist){
 
   // When tweets get sent our way ...
   stream.on('data', function(data) {
@@ -15,12 +15,13 @@ module.exports = function(stream, io){
         avatar: data['user']['profile_image_url'],
         body: data['text'],
         date: data['created_at'],
-        screenname: data['user']['screen_name']
+        screenname: data['user']['screen_name'],
+        track: tracklist
       };
 
       // Create a new model instance with our object
       var tweetEntry = new Tweet(tweet);
-
+      console.log("new tweets come");
       // Save 'er to the database
       tweetEntry.save(function(err) {
         if (!err) {
