@@ -61,7 +61,6 @@ module.exports = TweetsApp = React.createClass({
 
     // Get current application state
     var updated = this.state.tweets;
-
     // Mark our tweets active
     updated.forEach(function(tweet){
       tweet.active = true;
@@ -169,6 +168,13 @@ module.exports = TweetsApp = React.createClass({
 
   },
   showTweets: function(){
+    // So meta lol
+    var self = this;
+
+    // If we still have tweets...
+    if(tweets.length > 0) {
+      console.log(tweets.length);
+    }
     
     var data = [
       {
@@ -189,10 +195,11 @@ module.exports = TweetsApp = React.createClass({
 
     return (
       <div className="tweets-app">
-        <Tweets tweets={this.state.tweets} />
+        <Chart tweets={this.state.tweets}/>
+        <Tweets tweets={this.state.tweets}/>
         <Loader paging={this.state.paging}/>
         <NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/>
-        <Chart onShowTweets={this.showTweets} />
+         
       </div>
     )
 

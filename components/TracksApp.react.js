@@ -35,8 +35,8 @@ module.exports = TracksApp = React.createClass({
           <fieldset>
             <input id="inputCustomer" type="text" placeholder="Customer"></input>
             <input id="inputTracks" type="text" placeholder="Tracks"></input>
-            <button id="btnAddTracks">Add tracks</button>
-            
+            <button id="btnAddTracks">Add tracks</button>  
+            <button id="btnCalcuTracks">Calculate tracks</button>  
           </fieldset>
         </div>
         </div>

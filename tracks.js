@@ -3,6 +3,7 @@ var app = express();
 var router = express.Router();
 var mongoose = require('mongoose');
 var Track = require('./models/Track');
+var Tweet = require('./models/Tweet');
 var qs = require('querystring');
 /*
  * GET userlist.
@@ -11,6 +12,11 @@ router.get('/tracklist', function(req, res) {
 
     Track.find({},{},function(e,docs){
         res.json(docs);
+    });
+});
+router.get('/tweetlist', function(req, res) {
+    Tweet.find({},{},function(e,docs){
+        console.log(docs);
     });
 });
 
@@ -44,18 +50,6 @@ router.post('/addtrack', function(req, res) {
     });
 
     
-});
-
-/*
- * DELETE to deleteuser.
- */
-router.delete('/deletetrack/:id', function(req, res) {
-    var db = req.db;
-    var collection = db.get('trackstest');
-    var userToDelete = req.params.id;
-    collection.remove({ '_id' : userToDelete }, function(err) {
-        res.send((err === null) ? { msg: '' } : { msg:'error: ' + err });
-    });
 });
 
 module.exports = router;

@@ -12,11 +12,56 @@ $(document).ready(function() {
     // Add User button click
    $('#btnAddTracks').on('click', addTracks);
    $('#collectTweets').on('click', {source: document.getElementById('trackId')}, collectTweets);
-
+   $('#sentimentCalculate').on('click', {source: document.getElementById('trackId')}, sentimentCalculate);
+   $('#btnCalcuTracks').on('click',calculate)
 });
 
 // Functions =============================================================
+//Calculate Sentiment
+function sentimentCalculate(trackwords) {
+    var mytrack = trackword.data.source.text;
+    console.log("sentimentCalculate:"+mytrack);
+    $.ajax({
+            type: 'GET',
+            url: '/analyser/search'
+        }).done(function( response ) {
+            // Check for successful (blank) response
+            alert('Error: ' + response.msg);
+        });
+};
+//Calculate
+function calculate(event){
+    event.preventDefault();
 
+    // Super basic validation - increase errorCount variable if any fields are blank
+    var errorCount = 0;
+    $('#addTracks input').each(function(index, val) {
+        if($(this).val() === '') { errorCount++; }
+    });
+
+    // Check and make sure errorCount's still at zero
+    if(errorCount === 0) {
+        var newTrack = {
+            'customer': $('#addTracks fieldset input#inputCustomer').val(),
+            'tracks': $('#addTracks fieldset input#inputTracks').val()
+        }
+       // If it is, compile all user info into one object
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: newTrack,
+            url: '/analyser/search',
+            dataType: 'JSON'
+        }).done(function( response ) {
+            //logs
+        });
+    }
+    else {
+        // If errorCount is more than 0, error out
+        alert('Please fill in all fields');
+        return false;
+    }
+};
 // Add User
 function addTracks(event) {
     event.preventDefault();
@@ -65,21 +110,17 @@ function addTracks(event) {
 };
 
 function collectTweets(trackword){
-    event.preventDefault();
-    console.log("collect tweets");
+    
+    console.log("collect tweets:"+trackword);
     var mytrack = trackword.data.source.text;
+    console.log("collect tweets:"+mytrack);
     $.ajax({
             type: 'GET',
             url: '/search/'+mytrack
         }).done(function( response ) {
             // Check for successful (blank) response
-            if (response.msg === '') {
+           
                 console.log("success!!");
-            }
-            else {
-                // If something goes wrong, alert the error message that our service returned
-                alert('Error: ' + response.msg);
-            }
         });
 };
 

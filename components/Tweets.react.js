@@ -14,10 +14,10 @@ module.exports = Tweets = React.createClass({
         <Tweet key={tweet._id} tweet={tweet} />
       )
     });
-
     // Return ul filled with our mapped tweets
     return (
       <ul className="tweets">{content}</ul>
+
     )
 
   }

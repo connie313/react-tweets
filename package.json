@@ -20,8 +20,10 @@
     "socket.io": "^1.1.0",
     "mongodb": "~2.0.33",
     "monk": "~1.0.1",
+    "d3": "~3.5.5",
+    "jsdom": "~3.1.2",
     "twitter": "^1.2.0",
-    "plotly":" ~1.0.6"
+    "Sentimental": "~0.0.4"
   },
   "devDependencies": {
     "browserify": "~6.0.3",
