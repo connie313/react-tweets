@@ -1,4 +1,3 @@
-/** @jsx React.DOM */
 
 var React = require('react');
 var Tweets = require('./Tweets.react.js');
@@ -9,7 +8,7 @@ var Chart = require('./Chart.react.js');
 // Export the TweetsApp component
 module.exports = TweetsApp = React.createClass({
 
-  // Method to add a tweet to our timeline
+  // Method to add a tweet to our timelineinitial-state
   addTweet: function(tweet){
 
     // Get current application state
@@ -108,6 +107,8 @@ module.exports = TweetsApp = React.createClass({
   // Method to check if more tweets should be loaded, by scroll position
   checkWindowScroll: function(){
 
+    console.log('Conie is good girl')
+
     // Get scroll pos & window data
     var h = Math.max(document.documentElement.clientHeight, window.innerHeight || 0);
     var s = (document.body.scrollTop || document.documentElement.scrollTop || 0);
@@ -175,7 +176,7 @@ module.exports = TweetsApp = React.createClass({
       <div className="tweets-app">
         <Chart tweets={this.state.tweets}/>
         <Tweets tweets={this.state.tweets}/>
-        <Loader paging={this.state.paging}/>
+        <Loader paging={this.state.paging} />
         <NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/> 
       </div>
     )

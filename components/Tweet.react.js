@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react');
 
 module.exports = Tweet = React.createClass({
@@ -16,9 +14,11 @@ module.exports = Tweet = React.createClass({
           <span className="content">{tweet.body}</span>
         </blockquote>
         <span>
-          <small>Keywords:</small>
-          {tweet.track}
-          <small>Sentimenal Score</small>
+          <small>Keywords: </small>
+          {tweet.track} &nbsp;
+          <small>Location: </small>
+          {tweet.location} &nbsp;
+          <small>Sentimenal Score: </small>
           {tweet.score}
         </span>
       </li>

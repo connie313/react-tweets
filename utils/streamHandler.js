@@ -69,7 +69,7 @@ module.exports = function(stream, io, tracklist, location){
     // tweetify = JSON.stringify(tweet);
     // console.log("tweetify:"+tweet);
     // if(tweet){
-       tweet = tweet.replace('#', '');
+    tweet = tweet.replace('#', '');
     //   console.log("replace already");
     // }
     // perfrom sentiment on the text

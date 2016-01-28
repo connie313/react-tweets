@@ -1,5 +1,3 @@
-/** @jsx React.DOM */
-
 var React = require('react');
 
 
@@ -14,6 +12,7 @@ module.exports = Chart = React.createClass({
     	<div className="chart">
     		<div id="pie"></div>
     		<div className="timeseries"></div>
+    		<div id="dot"></div>
 		</div>
 	    )
     }

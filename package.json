@@ -5,8 +5,9 @@
   "main": "app.js",
   "scripts": {
     "watch": "watchify app.js -o public/js/bundle.js -v",
-    "browserify": "browserify app.js | uglifyjs > public/js/bundle.js",
-    "build": "npm run browserify ",
+    "browserify": "browserify app.js > public/js/bundle.js",
+    "build2": "npm run browserify ",
+    "build": "browserify -t [ babelify --presets [ react ] ] app.js > public/js/bundle.js",
     "start": "npm install"
   },
   "author": "Ken Wheeler",
@@ -16,7 +17,8 @@
     "express-handlebars": "~1.1.0",
     "mongoose": "^3.8.23",
     "node-jsx": "~0.12.4",
-    "react": "~0.13.3",
+    "react": "~0.14.3",
+    "react-dom": "0.14.3",
     "socket.io": "^1.1.0",
     "mongodb": "~2.0.33",
     "monk": "~1.0.1",
@@ -26,15 +28,14 @@
     "Sentimental": "~0.0.4"
   },
   "devDependencies": {
-    "browserify": "~6.0.3",
-    "nodemon": "^1.2.1",
-    "reactify": "~0.14.0",
-    "uglify-js": "~2.4.15",
-    "watchify": "^3.1.1"
-  },
-  "browserify": {
-    "transform": [
-      "reactify"
-    ]
-  }
+    "browserify": "13.0.0",
+    "nodemon": "^1.2.x",
+    
+    "watchify": "^3.1.1",
+    "babelify": "7.2.0",
+    "uglifyjs": "2.4.10",
+    
+    "babel-preset-react": "6.3.13"
+
+  }  
 }
