@@ -3,13 +3,19 @@ $(document).ready(function() {
 
     // Populate the user table on initial page load
     // Add User button click
-    console.log("enter");
    var tweet_tmp=$("#initial-state").html();
+
+   $('#dash').on('click', dashboard);
+   $('#showt').on('click', showtweets);
+   
    var tweets = JSON.parse(tweet_tmp);
    populateChart(tweets);// pie
    populateTimeseries(tweets);//timeseries
    populateTimeOfDay(tweets);//time of day
 });
+function dashboard(){
+
+};
 function populateChart(tweets){
 	var width = 400;
 	var height = 400;

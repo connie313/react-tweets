@@ -174,10 +174,18 @@ module.exports = TweetsApp = React.createClass({
 
     return (
       <div className="tweets-app">
-        <Chart tweets={this.state.tweets}/>
-        <Tweets tweets={this.state.tweets}/>
-        <Loader paging={this.state.paging} />
-        <NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/> 
+        <div>
+          <button type="button" className="button" id="dash">Dashboard</button>
+          <button type="button" className="button" id="showt">Show Tweets</button>
+        </div>
+        <div className="dashboard">
+          <Chart tweets={this.state.tweets}/>
+        </div>
+        <div className="showTweets">
+          <Tweets tweets={this.state.tweets}/>
+          <Loader paging={this.state.paging} />
+          <NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/> 
+        </div>
       </div>
     )
 
