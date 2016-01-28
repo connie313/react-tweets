@@ -39,6 +39,15 @@ module.exports = TracksApp = React.createClass({
             <button id="btnCalcuTracks">Calculate tracks</button>  
           </fieldset>
         </div>
+        <h2>Stream Tracking</h2>
+        <div id="twitterStream">
+          <fieldset>
+            <input id="inputOneTrack" type="text" placeholder="Track"></input>
+            <input id="inputTracklist" type="text" placeholder="Tracklist"></input>
+            <input id="inputLocation" type="text" placeholder="Location"></input>
+            <button id="btnOneTracks">Stream API</button> 
+          </fieldset>
+        </div>
         </div>
       </div>
     )

@@ -1,164 +1,35 @@
 0 info it worked if it ends with ok
-1 verbose cli [ '/usr/local/bin/node',
-1 verbose cli   '/usr/local/bin/npm',
-1 verbose cli   'install',
-1 verbose cli   'querystring' ]
-2 info using npm@2.7.4
-3 info using node@v5.4.1
-4 warn package.json react-isomorph@0.0.0 No repository field.
-5 warn package.json querystring@0.2.0 querystring is also the name of a node core module.
-6 verbose install querystring is installed as 0.2.0
-7 silly cache add args [ 'querystring', null ]
-8 verbose cache add spec querystring
-9 silly cache add parsed spec Result {
-9 silly cache add   raw: 'querystring',
-9 silly cache add   scope: null,
-9 silly cache add   name: 'querystring',
-9 silly cache add   rawSpec: '',
-9 silly cache add   spec: '*',
-9 silly cache add   type: 'range' }
-10 verbose addNamed querystring@*
-11 silly addNamed semver.valid null
-12 silly addNamed semver.validRange *
-13 silly addNameRange { name: 'querystring', range: '*', hasData: false }
-14 silly mapToRegistry name querystring
-15 silly mapToRegistry using default registry
-16 silly mapToRegistry registry https://registry.npmjs.org/
-17 silly mapToRegistry uri https://registry.npmjs.org/querystring
-18 verbose addNameRange registry:https://registry.npmjs.org/querystring not in flight; fetching
-19 verbose request uri https://registry.npmjs.org/querystring
-20 verbose request no auth needed
-21 info attempt registry request try #1 at 5:34:38 PM
-22 verbose request id f6ee33f298b2a22e
-23 verbose etag "C3PTJ6SPDXGLA1DDEYMK0IBUY"
-24 http request GET https://registry.npmjs.org/querystring
-25 http 304 https://registry.npmjs.org/querystring
-26 silly get cb [ 304,
-26 silly get   { date: 'Mon, 25 Jan 2016 17:34:38 GMT',
-26 silly get     via: '1.1 varnish',
-26 silly get     'cache-control': 'max-age=300',
-26 silly get     etag: '"C3PTJ6SPDXGLA1DDEYMK0IBUY"',
-26 silly get     age: '246',
-26 silly get     connection: 'keep-alive',
-26 silly get     'x-served-by': 'cache-lcy1124-LCY',
-26 silly get     'x-cache': 'HIT',
-26 silly get     'x-cache-hits': '3',
-26 silly get     'x-timer': 'S1453743278.648441,VS0,VE0',
-26 silly get     vary: 'Accept' } ]
-27 verbose etag https://registry.npmjs.org/querystring from cache
-28 verbose get saving querystring to /Users/connie/.npm/registry.npmjs.org/querystring/.cache.json
-29 silly addNameRange number 2 { name: 'querystring', range: '*', hasData: true }
-30 silly addNameRange versions [ 'querystring', [ '0.0.1', '0.0.4', '0.1.0', '0.2.0' ] ]
-31 verbose addNamed querystring@0.2.0
-32 silly addNamed semver.valid 0.2.0
-33 silly addNamed semver.validRange 0.2.0
-34 silly cache afterAdd querystring@0.2.0
-35 verbose afterAdd /Users/connie/.npm/querystring/0.2.0/package/package.json not in flight; writing
-36 verbose afterAdd /Users/connie/.npm/querystring/0.2.0/package/package.json written
-37 silly install resolved [ { name: 'querystring',
-37 silly install resolved     id: 'querystring',
-37 silly install resolved     version: '0.2.0',
-37 silly install resolved     description: 'Node\'s querystring module for all engines.',
-37 silly install resolved     keywords: [ 'commonjs', 'query', 'querystring' ],
-37 silly install resolved     author: { name: 'Irakli Gozalishvili', email: 'rfobic@gmail.com' },
-37 silly install resolved     repository:
-37 silly install resolved      { type: 'git',
-37 silly install resolved        url: 'git://github.com/Gozala/querystring.git',
-37 silly install resolved        web: 'https://github.com/Gozala/querystring' },
-37 silly install resolved     bugs: { url: 'http://github.com/Gozala/querystring/issues/' },
-37 silly install resolved     devDependencies:
-37 silly install resolved      { test: '~0.x.0',
-37 silly install resolved        phantomify: '~0.x.0',
-37 silly install resolved        retape: '~0.x.0',
-37 silly install resolved        tape: '~0.1.5' },
-37 silly install resolved     engines: { node: '>=0.4.x' },
-37 silly install resolved     scripts:
-37 silly install resolved      { test: 'npm run test-node && npm run test-browser && npm run test-tap',
-37 silly install resolved        'test-browser': 'node ./node_modules/phantomify/bin/cmd.js ./test/common-index.js',
-37 silly install resolved        'test-node': 'node ./test/common-index.js',
-37 silly install resolved        'test-tap': 'node ./test/tap-index.js' },
-37 silly install resolved     testling: { files: 'test/tap-index.js', browsers: [Object] },
-37 silly install resolved     licenses: [ [Object] ],
-37 silly install resolved     _id: 'querystring@0.2.0',
-37 silly install resolved     dist:
-37 silly install resolved      { shasum: 'b209849203bb25df820da756e747005878521620',
-37 silly install resolved        tarball: 'http://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz' },
-37 silly install resolved     _npmVersion: '1.1.65',
-37 silly install resolved     _npmUser: { name: 'gozala', email: 'rfobic@gmail.com' },
-37 silly install resolved     maintainers: [ [Object] ],
-37 silly install resolved     directories: {},
-37 silly install resolved     _shasum: 'b209849203bb25df820da756e747005878521620',
-37 silly install resolved     _resolved: 'https://registry.npmjs.org/querystring/-/querystring-0.2.0.tgz',
-37 silly install resolved     _from: 'querystring@*',
-37 silly install resolved     readme: 'ERROR: No README data found!',
-37 silly install resolved     homepage: 'https://github.com/Gozala/querystring' } ]
-38 info install querystring@0.2.0 into /Users/connie/Downloads/react-tweets
-39 info installOne querystring@0.2.0
-40 verbose installOne of querystring to /Users/connie/Downloads/react-tweets not in flight; installing
-41 verbose lock using /Users/connie/.npm/_locks/querystring-f1cf9b6f319cc4e9.lock for /Users/connie/Downloads/react-tweets/node_modules/querystring
-42 silly install write writing querystring 0.2.0 to /Users/connie/Downloads/react-tweets/node_modules/querystring
-43 silly cache addNamed cb querystring@0.2.0
-44 verbose unbuild node_modules/querystring
-45 info preuninstall querystring@0.2.0
-46 info uninstall querystring@0.2.0
-47 verbose unbuild rmStuff querystring@0.2.0 from /Users/connie/Downloads/react-tweets/node_modules
-48 info postuninstall querystring@0.2.0
-49 silly gentlyRm /Users/connie/Downloads/react-tweets/node_modules/querystring is being purged from base /Users/connie/Downloads/react-tweets
-50 verbose gentlyRm don't care about contents; nuking /Users/connie/Downloads/react-tweets/node_modules/querystring
-51 silly vacuum-fs purging /Users/connie/Downloads/react-tweets/node_modules/querystring
-52 silly vacuum-fs quitting because other entries in /Users/connie/Downloads/react-tweets/node_modules
-53 verbose tar unpack /Users/connie/.npm/querystring/0.2.0/package.tgz
-54 verbose tar unpacking to /Users/connie/Downloads/react-tweets/node_modules/querystring
-55 silly gentlyRm /Users/connie/Downloads/react-tweets/node_modules/querystring is being purged
-56 verbose gentlyRm don't care about contents; nuking /Users/connie/Downloads/react-tweets/node_modules/querystring
-57 silly gunzTarPerm modes [ '755', '644' ]
-58 silly gunzTarPerm extractEntry package.json
-59 silly gunzTarPerm extractEntry decode.js
-60 silly gunzTarPerm extractEntry encode.js
-61 silly gunzTarPerm extractEntry index.js
-62 silly gunzTarPerm extractEntry History.md
-63 silly gunzTarPerm extractEntry .Readme.md.un~
-64 silly gunzTarPerm extractEntry .package.json.un~
-65 silly gunzTarPerm extractEntry .travis.yml
-66 silly gunzTarPerm extractEntry License.md
-67 silly gunzTarPerm extractEntry .History.md.un~
-68 silly gunzTarPerm extractEntry Readme.md
-69 silly gunzTarPerm extractEntry test/common-index.js
-70 silly gunzTarPerm extractEntry test/index.js
-71 silly gunzTarPerm extractEntry test/tap-index.js
-72 silly gunzTarPerm extractEntry test/.index.js.un~
-73 info preinstall querystring@0.2.0
-74 silly install resolved []
-75 verbose about to build /Users/connie/Downloads/react-tweets/node_modules/querystring
-76 info build /Users/connie/Downloads/react-tweets/node_modules/querystring
-77 verbose linkStuff [ false,
-77 verbose linkStuff   false,
-77 verbose linkStuff   false,
-77 verbose linkStuff   '/Users/connie/Downloads/react-tweets/node_modules' ]
-78 info linkStuff querystring@0.2.0
-79 verbose linkBins querystring@0.2.0
-80 verbose linkMans querystring@0.2.0
-81 verbose rebuildBundles querystring@0.2.0
-82 info install querystring@0.2.0
-83 info postinstall querystring@0.2.0
-84 verbose unlock done using /Users/connie/.npm/_locks/querystring-f1cf9b6f319cc4e9.lock for /Users/connie/Downloads/react-tweets/node_modules/querystring
-85 verbose stack Error: The package react does not satisfy its siblings' peerDependencies requirements!
-85 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:125:32
-85 verbose stack     at /usr/local/lib/node_modules/npm/lib/install.js:264:7
-85 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:138:5
-85 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
-85 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
-85 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
-85 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
-85 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
-85 verbose stack     at cb (/usr/local/lib/node_modules/npm/node_modules/slide/lib/async-map.js:47:24)
-85 verbose stack     at /usr/local/lib/node_modules/npm/node_modules/read-installed/read-installed.js:251:14
-86 verbose cwd /Users/connie/Downloads/react-tweets
-87 error Darwin 14.5.0
-88 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "install" "querystring"
-89 error node v5.4.1
-90 error npm  v2.7.4
-91 error code EPEERINVALID
-92 error peerinvalid The package react does not satisfy its siblings' peerDependencies requirements!
-92 error peerinvalid Peer react-dom@0.14.6 wants react@^0.14.6
-93 verbose exit [ 1, true ]
+1 verbose cli [ '/usr/local/bin/node', '/usr/local/bin/npm', 'start' ]
+2 info using npm@2.14.9
+3 info using node@v0.12.9
+4 verbose run-script [ 'prestart', 'start', 'poststart' ]
+5 info prestart react-isomorph@0.0.0
+6 info start react-isomorph@0.0.0
+7 verbose unsafe-perm in lifecycle true
+8 info react-isomorph@0.0.0 Failed to exec start script
+9 verbose stack Error: react-isomorph@0.0.0 start: `npm install`
+9 verbose stack Exit status 1
+9 verbose stack     at EventEmitter.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/lifecycle.js:214:16)
+9 verbose stack     at EventEmitter.emit (events.js:110:17)
+9 verbose stack     at ChildProcess.<anonymous> (/usr/local/lib/node_modules/npm/lib/utils/spawn.js:24:14)
+9 verbose stack     at ChildProcess.emit (events.js:110:17)
+9 verbose stack     at maybeClose (child_process.js:1016:16)
+9 verbose stack     at Process.ChildProcess._handle.onexit (child_process.js:1088:5)
+10 verbose pkgid react-isomorph@0.0.0
+11 verbose cwd /Users/connie/Downloads/react-tweets
+12 error Darwin 14.5.0
+13 error argv "/usr/local/bin/node" "/usr/local/bin/npm" "start"
+14 error node v0.12.9
+15 error npm  v2.14.9
+16 error code ELIFECYCLE
+17 error react-isomorph@0.0.0 start: `npm install`
+17 error Exit status 1
+18 error Failed at the react-isomorph@0.0.0 start script 'npm install'.
+18 error This is most likely a problem with the react-isomorph package,
+18 error not with npm itself.
+18 error Tell the author that this fails on your system:
+18 error     npm install
+18 error You can get their info via:
+18 error     npm owner ls react-isomorph
+18 error There is likely additional logging output above.
+19 verbose exit [ 1, true ]

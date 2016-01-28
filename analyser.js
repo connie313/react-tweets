@@ -2,22 +2,27 @@ var express = require('express');
 var app = express();
 var router = express.Router();
 
-var twitter = require('twitter');
+var twit = require('twit');
 var sentimental = require('Sentimental'); 
-
+var config = require('./config');
 router.get('/index', function(req, res) {
    res.send("pong!", 200);
 });
 
 
-router.get('/search', function(req, res) {
+router.post('/search', function(req, res) {
   // grab the request from the client
-  var choices = JSON.parse(req.body.choices);
+  var choices = ["hello","hi"];
   // grab the current date
   var today = new Date();
   // establish the twitter config (grab your keys at dev.twitter.com)
   // Create a new ntwitter instance
- var twit = new twitter(config.twitter);
+ var twitter = new twit({
+    consumer_key: "maVo5lZEF0Lsz1851SjBOaDQP",
+    consumer_secret: "kUFCrZsod1XmtzgdPLkDLCzCRFBB0K9JfWnEQlmoNVJHbhkf7R",
+    access_token: "496341027-YNRbA3it78RrNKUq6A4zmKx6R7OTCt1qNgxTpkt9",
+    access_token_secret: "0kl1R8F5Y0bejPcDYq7baFheDlKz3bR9iHe73QO349Nb6"
+  });
   // set highest score
   var highestScore = -Infinity;
   // set highest choice
@@ -34,7 +39,7 @@ router.get('/search', function(req, res) {
     // add choice to new array
     array.push(choices[i])
     // grad 20 tweets from today
-    twit.search('nodejs OR #node', {q: '' + choices[i] + ' since:' + today.getFullYear() + '-' + 
+    twitter.get('search/tweets', {q: '' + choices[i] + ' since:' + today.getFullYear() + '-' + 
       (today.getMonth() + 1) + '-' + today.getDate(), count:20}, function(err, data) {
         // perfrom sentiment analysis (see below)
         console.log("what is it:"+data['statuses']);
@@ -67,7 +72,7 @@ function performAnalysis(tweetSet) {
     console.log("analysis2:"+retweets);
     console.log("analysis3:"+retweets);
     // remove the hashtag from the tweet text
-    tweet = tweet.replace('#', '');
+    // tweet = tweet.replace('#', '');
     // perfrom sentiment on the text
     var score = sentimental.analyze(tweet)['score'];
     console.log("analysis:"+score);

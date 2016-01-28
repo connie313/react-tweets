@@ -45,11 +45,11 @@ router.post('/addtrack', function(req, res) {
     
     
     req.on('end', function () {
-            var post = qs.parse(body);
-            res.redirect('/twit');
-    });
-
-    
+           
+    });  
 });
+/*
+* 
+*/
 
 module.exports = router;

@@ -167,28 +167,6 @@ module.exports = TweetsApp = React.createClass({
     window.addEventListener('scroll', this.checkWindowScroll);
 
   },
-  showTweets: function(){
-    // So meta lol
-    var self = this;
-
-    // If we still have tweets...
-    if(tweets.length > 0) {
-      console.log(tweets.length);
-    }
-    
-    var data = [
-      {
-        x: ["2013-10-04 22:23:00", "2013-11-04 22:23:00", "2013-12-04 22:23:00"],
-        y: [1, 3, 6],
-        type: "scatter"
-      }
-    ];
-    var graphOptions = {filename: "date-axes", fileopt: "overwrite"};
-    plotly.plot(data, graphOptions, function (err, msg) {
-        console.log(msg);
-    });
-  },
-  
 
   // Render the component
   render: function(){
@@ -198,8 +176,7 @@ module.exports = TweetsApp = React.createClass({
         <Chart tweets={this.state.tweets}/>
         <Tweets tweets={this.state.tweets}/>
         <Loader paging={this.state.paging}/>
-        <NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/>
-         
+        <NotificationBar count={this.state.count} onShowNewTweets={this.showNewTweets}/> 
       </div>
     )
 

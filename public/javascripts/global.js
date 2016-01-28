@@ -13,16 +13,42 @@ $(document).ready(function() {
    $('#btnAddTracks').on('click', addTracks);
    $('#collectTweets').on('click', {source: document.getElementById('trackId')}, collectTweets);
    $('#sentimentCalculate').on('click', {source: document.getElementById('trackId')}, sentimentCalculate);
-   $('#btnCalcuTracks').on('click',calculate)
+   $('#btnCalcuTracks').on('click',calculate);
+   $('#btnOneTracks').on('click', streamOneTracks);
 });
 
 // Functions =============================================================
+//stream API
+function streamOneTracks(event){
+    event.preventDefault();
+
+    // Super basic validation - increase errorCount variable if any fields are blank
+   
+        var streamParam = {
+            'track': $('#twitterStream fieldset input#inputOneTrack').val().toString(),
+            'trackList': $('#twitterStream fieldset input#inputTracklist').val().toString(),
+            'location': $('#twitterStream fieldset input#inputLocation').val().toString()  
+        }
+        // If it is, compile all user info into one object
+        // Use AJAX to post the object to our adduser service
+        $.ajax({
+            type: 'POST',
+            data: streamParam,
+            url: '/search',
+            dataType: 'JSON'
+        }).done(function( response ) {
+            //logs
+        });
+    
+    
+};
+
 //Calculate Sentiment
 function sentimentCalculate(trackwords) {
-    var mytrack = trackword.data.source.text;
+    var mytrack = trackwords.data.source.text;
     console.log("sentimentCalculate:"+mytrack);
     $.ajax({
-            type: 'GET',
+            type: 'POST',
             url: '/analyser/search'
         }).done(function( response ) {
             // Check for successful (blank) response
@@ -45,7 +71,7 @@ function calculate(event){
             'customer': $('#addTracks fieldset input#inputCustomer').val(),
             'tracks': $('#addTracks fieldset input#inputTracks').val()
         }
-       // If it is, compile all user info into one object
+        // If it is, compile all user info into one object
         // Use AJAX to post the object to our adduser service
         $.ajax({
             type: 'POST',
@@ -119,8 +145,7 @@ function collectTweets(trackword){
             url: '/search/'+mytrack
         }).done(function( response ) {
             // Check for successful (blank) response
-           
-                console.log("success!!");
+            console.log("success!!");
         });
 };
 

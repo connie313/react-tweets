@@ -6,10 +6,14 @@ var schema = new mongoose.Schema({
   , active     : Boolean
   , author     : String
   , avatar     : String
+  , coordinates: String
+  , place      : String
   , body       : String
   , date       : Date
   , screenname : String
+  , score      : String
   , track      : String
+  , location   : String
 });
 
 // Create a static getTweets method to return tweet data from the db
@@ -19,7 +23,7 @@ schema.statics.getTweets = function(page, skip, callback) {
       start = (page * 10) + (skip * 1);
 
   // Query the db, using skip and limit to achieve page chunks
-  Tweet.find({},'twid active author avatar body date screenname track',{skip: start, limit: 10}).sort({date: 'desc'}).exec(function(err,docs){
+  Tweet.find({},'twid active author avatar coordinates place body date screenname score track location',{skip: start, limit: 10}).sort({date: 'desc'}).exec(function(err,docs){
 
     // If everything is cool...
     if(!err) {

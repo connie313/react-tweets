@@ -18,6 +18,8 @@ module.exports = Tweet = React.createClass({
         <span>
           <small>Keywords:</small>
           {tweet.track}
+          <small>Sentimenal Score</small>
+          {tweet.score}
         </span>
       </li>
     )

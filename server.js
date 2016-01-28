@@ -8,6 +8,7 @@ var express = require('express'),
   tracks = require('./tracks'),
   analyser = require('./analyser'),
   config = require('./config'),
+  qs = require('querystring'),
   streamHandler = require('./utils/streamHandler');
 
 // Create an express instance and set a port variable
@@ -21,13 +22,16 @@ app.set('view engine', 'handlebars');
 app.disable('etag');
 
 // Connect to our mongo database
-mongoose.connect('mongodb://localhost/react-tweets-test');
+mongoose.connect('mongodb://localhost/react-tweet1');
 
 // Create a new ntwitter instance
 var twit = new twitter(config.twitter);
 // Index Route
 app.get('/', routes.index);
 app.get('/twit', routes.twit);
+/*
+* one Track
+*/
 app.get('/search/:id', function(req,res){
   var tracklist = req.params.id;
   console.log(tracklist);
@@ -35,6 +39,50 @@ app.get('/search/:id', function(req,res){
     streamHandler(stream,io,tracklist);
   });
   res.redirect('/');
+});
+
+/*
+* location
+*/
+app.post('/search', function(req,res){
+    console.log("tracklist search");
+    var body='';
+    req.on('data', function(data){
+        body+=data; 
+    });
+    
+    
+    req.on('end', function () {
+        var post = qs.parse(body); 
+        console.log("data track:"+post.track); 
+        console.log("data tracklist:"+post.trackList);
+        console.log("data location:"+post.location);
+        if(post.track!==''){
+          console.log("perform stream post track");
+          twit.stream('statuses/filter',{ track: post.track}, function(stream){
+            streamHandler(stream,io,post.track,'');
+          });
+        }
+        if(post.trackList!==''){
+          console.log("perform stream post tracklist");
+          var trackarray = post.trackList.split(",");
+          console.log("array:"+trackarray.toString());
+          twit.stream('statuses/filter',{ track: trackarray.toString()}, function(stream){
+            streamHandler(stream,io,post.trackList,'');
+          });
+        }
+        if(post.location!==''){
+          console.log("perform stream post location");
+
+          var locationarray = post.location.split(",");
+          console.log("array:"+locationarray.toString());
+          twit.stream('statuses/filter',{ 'locations': locationarray.toString()}, function(stream){
+            streamHandler(stream,io,'',post.location);
+          });
+        }
+        res.redirect('/');
+
+    });  
 });
 
 
