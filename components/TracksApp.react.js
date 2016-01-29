@@ -17,37 +17,93 @@ module.exports = TracksApp = React.createClass({
     });
 
     return (
-      <div className="tracks-app">
-        <div id="wrapper">
-        <h2>Track List</h2>
-        <div id="trackList">
-        <table>
-        <thead>
-          <tr><th>Customer</th><th>Tracks</th><th>Delete</th></tr>
-        </thead>
-        <tbody>
-          <ul className="tracks">{content}</ul>
-        </tbody>
-        </table>
+      <div className="tracks-app container-fluid" id="wrapper">
+        <div className="row">
+          <div className="col-md-12" id="trackList">
+            <h3>
+              Search/filter
+            </h3>
+            <table className="table table-hover">
+              <thead>
+                <tr>
+                  <th>
+                    Customer
+                  </th>
+                  <th>
+                    Track
+                  </th>
+                  <th>
+                    Operation1
+                  </th>
+                  <th>
+                    Operation2
+                  </th>
+                </tr>
+              </thead>
+              <tbody className="tracks">
+                {content}
+              </tbody>
+            </table>
+          </div>
         </div>
-        <h2>Add Track Keywords</h2>
-        <div id="addTracks">
-          <fieldset>
-            <input id="inputCustomer" type="text" placeholder="Customer"></input>
-            <input id="inputTracks" type="text" placeholder="Tracks"></input>
-            <button id="btnAddTracks">Add tracks</button>  
-            <button id="btnCalcuTracks">Calculate tracks</button>  
-          </fieldset>
+        <div className="row">
+          <div className="col-md-12" >
+            <h3>
+              Add Track Keyword
+            </h3>
+            <div id="addTracks">
+            <fieldset>
+              <div className="form-group">
+                <label for="inputCustomer">
+                  Customer
+                </label>
+                <input type="text" className="form-control" id="inputCustomer" />
+              </div>
+              <div className="form-group">
+                <label for="inputTracks">
+                  Track
+                </label>
+                <input type="text" className="form-control" id="inputTracks" />
+              </div>
+              <button className="btn btn-default" id="btnAddTracks">
+                Add tracks
+              </button>
+              <button className="btn btn-default" id="btnCalcuTracks">
+                Calculate tracks
+              </button>
+            </fieldset>
+            </div>
+          </div>
         </div>
-        <h2>Stream Tracking</h2>
-        <div id="twitterStream">
-          <fieldset>
-            <input id="inputOneTrack" type="text" placeholder="Track"></input>
-            <input id="inputTracklist" type="text" placeholder="Tracklist"></input>
-            <input id="inputLocation" type="text" placeholder="Location"></input>
-            <button id="btnOneTracks">Stream API</button> 
-          </fieldset>
-        </div>
+        <div className="row" >
+          <div className="col-md-12" id="twitterStream">
+            <h3>
+              Stream API
+            </h3>
+            <fieldset>
+              <div className="form-group">
+                <label for="inputTracks">
+                  Track
+                </label>
+                <input type="text" className="form-control" id="inputOneTrack"  placeholder="Track"/>
+              </div>
+              <div className="form-group">
+                <label for="inputTracklist">
+                  Tracklist
+                </label>
+                <input type="text" className="form-control" id="inputTracklist" placeholder="Tracklist" />
+              </div>
+              <div className="form-group">
+                <label for="InputLocation">
+                  Location
+                </label>
+                <input type="text" className="form-control" id="InputLocation" placeholder="location" />
+              </div>
+              <button id="btnOneTracks" className="btn btn-default">
+                Stream API
+              </button>
+            </fieldset>
+          </div>
         </div>
       </div>
     )

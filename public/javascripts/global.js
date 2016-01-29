@@ -1,13 +1,5 @@
-
-
 // DOM Ready =============================================================
 $(document).ready(function() {
-
-    // Populate the user table on initial page load
-   // populateTable();
-
-    // Username link click
-   //$('#userList table tbody').on('click', 'td a.linkshowuser', showTweetsInfo);
 
     // Add User button click
    $('#btnAddTracks').on('click', addTracks);
@@ -18,6 +10,7 @@ $(document).ready(function() {
 });
 
 // Functions =============================================================
+
 //stream API
 function streamOneTracks(event){
     event.preventDefault();
@@ -51,8 +44,7 @@ function sentimentCalculate(trackwords) {
             type: 'POST',
             url: '/analyser/search'
         }).done(function( response ) {
-            // Check for successful (blank) response
-            alert('Error: ' + response.msg);
+            console.log("successful");
         });
 };
 //Calculate
@@ -91,7 +83,6 @@ function calculate(event){
 // Add User
 function addTracks(event) {
     event.preventDefault();
-
     // Super basic validation - increase errorCount variable if any fields are blank
     var errorCount = 0;
     $('#addTracks input').each(function(index, val) {
@@ -112,24 +103,14 @@ function addTracks(event) {
             url: '/tracks/addtrack',
             dataType: 'JSON'
         }).done(function( response ) {
-
-            // Check for successful (blank) response
-            if (response.msg === '') {
-
-                // Clear the form inputs
-                $('#addTracks fieldset input').val('');
-
-                // Update the table
-                console.log("success!!");
-            }
-            else {
-                // If something goes wrong, alert the error message that our service returned
-                alert('Error: ' + response.msg);
-            }
+            console.log("Y");
+            alert("Data:"+response);
+            location.reload();
         });
     }
     else {
         // If errorCount is more than 0, error out
+        
         alert('Please fill in all fields');
         return false;
     }

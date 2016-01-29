@@ -6,12 +6,12 @@ module.exports = Trackli = React.createClass({
   render: function(){
     var track = this.props.track;
     return (
-      <li className="track">
-        <a>{track.customer}</a>
-        <a id="trackId">{track.tracks}</a>
-        <button id="collectTweets" >Collect tweets</button>
-        <button id="sentimentCalculate">Calculate Sentiment</button>
-      </li>
+      <tr className="track">
+        <td>{track.customer}</td>
+        <td id="trackId">{track.tracks}</td>
+        <td id="collectTweets" >Collect tweets</td>
+        <td id="sentimentCalculate">Calculate Sentiment</td>
+      </tr>
     )
   }
 });

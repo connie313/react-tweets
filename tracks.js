@@ -24,11 +24,15 @@ router.get('/tweetlist', function(req, res) {
  * POST to adduser.
  */
 router.post('/addtrack', function(req, res) {
-    if(req.method=='POST')
     var body = '';
     req.on('data', function(data){
-        console.log(data);
-        var temp=data.toString().split('&');
+        body+=data;
+    });
+    
+    
+    req.on('end', function () {
+           console.log(body);
+        var temp=body.toString().split('&');
         console.log(temp[0])
         var newTrack = {
             customer: temp[0].split('=')[1],
@@ -41,11 +45,7 @@ router.post('/addtrack', function(req, res) {
             }
             console.dir(newTrack);
         });
-    });
-    
-    
-    req.on('end', function () {
-           
+        res.end('Done');
     });  
 });
 /*

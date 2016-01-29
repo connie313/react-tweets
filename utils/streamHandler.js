@@ -46,6 +46,7 @@ module.exports = function(stream, io, tracklist, location){
         if (!err) {
           // If everything is cool, socket.io emits the tweet.
           io.emit('tweet', tweet);
+          redirect('/dashboard');
         }
       });
 

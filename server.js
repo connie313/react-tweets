@@ -22,13 +22,14 @@ app.set('view engine', 'handlebars');
 app.disable('etag');
 
 // Connect to our mongo database
-mongoose.connect('mongodb://localhost/react-tweet1');
+mongoose.connect('mongodb://localhost/react-tweet2');
 
 // Create a new ntwitter instance
 var twit = new twitter(config.twitter);
 // Index Route
 app.get('/', routes.index);
 app.get('/twit', routes.twit);
+app.get('/dashboard', routes.dashboard);
 /*
 * one Track
 */
@@ -38,7 +39,6 @@ app.get('/search/:id', function(req,res){
   twit.stream('statuses/filter',{ track: tracklist}, function(stream){
     streamHandler(stream,io,tracklist);
   });
-  res.redirect('/');
 });
 
 /*
@@ -80,7 +80,6 @@ app.post('/search', function(req,res){
             streamHandler(stream,io,'',post.location);
           });
         }
-        res.redirect('/');
 
     });  
 });

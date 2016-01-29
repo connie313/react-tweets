@@ -1,21 +1,23 @@
 // DOM Ready =============================================================
 $(document).ready(function() {
-
+	//startRefresh();
     // Populate the user table on initial page load
     // Add User button click
    var tweet_tmp=$("#initial-state").html();
-
-   $('#dash').on('click', dashboard);
-   $('#showt').on('click', showtweets);
    
    var tweets = JSON.parse(tweet_tmp);
    populateChart(tweets);// pie
    populateTimeseries(tweets);//timeseries
    populateTimeOfDay(tweets);//time of day
 });
-function dashboard(){
-
+//functions
+function startRefresh() {
+    setTimeout(startRefresh,1000);
+    $.get('/dashboard', function(data) {
+        $(document.body).html(data);  
+    });
 };
+
 function populateChart(tweets){
 	var width = 400;
 	var height = 400;

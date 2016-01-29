@@ -4,8 +4,8 @@ var JSX = require('node-jsx').install(),
   Tweet = require('./models/Tweet'),
   Track = require('./models/Track'),
   qs = require('querystring'),
-  
-  TracksApp = React.createFactory(require('./components/TracksApp.react'));
+  TracksApp = React.createFactory(require('./components/TracksApp.react')),
+  DashboardApp = React.createFactory(require('./components/DashboardApp.react'));
   
 module.exports = {
   index: function(req, res) {
@@ -20,6 +20,22 @@ module.exports = {
 
       // Render our 'home' template
       res.render('home', {
+        markup: markup, // Pass rendered react markup
+        state: JSON.stringify(tweets) // Pass current state to client side
+      });
+
+    });
+  },
+  dashboard: function(req, res) {
+    // Call static model method to get tweets in the db
+    Tweet.getTweets(0,0, function(tweets, pages) {
+      // Render React to a string, passing in our fetched tweets
+      var markup = React.renderToString(
+        DashboardApp({
+          tweets: tweets
+        })
+      );
+      res.render('dashboard', {
         markup: markup, // Pass rendered react markup
         state: JSON.stringify(tweets) // Pass current state to client side
       });
